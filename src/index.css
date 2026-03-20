@@ -929,6 +929,8 @@ footer a { color: var(--accent); text-decoration: none; font-size: 0.78rem; }
   .review-grid { grid-template-columns: 1fr; }
   .review-item.full { grid-column: 1; }
   .hero h1 { font-size: 1.7rem; }
+  .hero p { white-space: normal; word-break: break-word; overflow-wrap: break-word; }
+  .hero-pills { flex-wrap: wrap; }
   .success-steps { flex-direction: column; align-items: center; }
   footer { justify-content: center; }
 
