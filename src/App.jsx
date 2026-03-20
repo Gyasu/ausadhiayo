@@ -6,10 +6,12 @@ import Form from './components/form/Form'
 import Confirmation from './components/Confirmation'
 import ThemeToggle from './components/ThemeToggle'
 import LanguageModal from './components/LanguageModal'
+import SplashScreen from './components/SplashScreen'
 
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbx-XqxQVECJHVXeYrJP-kyAt-JFnHXfbqOSiS30331KZ5NA0gb5LRxqMG6XtTELkIrB/exec'
 
 export default function App() {
+  const [showSplash, setShowSplash] = useState(true)
   const [submitted, setSubmitted] = useState(false)
   const [confirmationRef, setConfirmationRef] = useState('')
 
@@ -35,6 +37,8 @@ export default function App() {
     setSubmitted(true)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+
+  if (showSplash) return <SplashScreen onDone={() => setShowSplash(false)} />
 
   return (
     <>
