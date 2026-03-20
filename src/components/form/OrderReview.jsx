@@ -10,7 +10,7 @@ function ReviewItem({ label, value, full }) {
   )
 }
 
-export default function OrderReview({ formData, medications }) {
+export default function OrderReview({ formData, medications, prescriptionImage }) {
   const { t } = useLanguage()
   const d = formData
   const meds = medications.filter(m => m.name.trim())
@@ -45,6 +45,18 @@ export default function OrderReview({ formData, medications }) {
             </div>
           </div>
           {d.allergies && <ReviewItem label={t.allergies} value={d.allergies} full />}
+          {prescriptionImage && (
+            <div className="review-item full">
+              <div className="ri-label">{t.rxImageLabel}</div>
+              <div style={{ marginTop: '6px' }}>
+                {prescriptionImage.type.startsWith('image/') ? (
+                  <img src={URL.createObjectURL(prescriptionImage)} alt="Prescription" style={{ maxWidth: '180px', borderRadius: '6px', border: '1px solid var(--border)' }} />
+                ) : (
+                  <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>📄 {prescriptionImage.name}</span>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

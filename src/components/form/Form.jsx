@@ -33,6 +33,7 @@ export default function Form({ onSubmit }) {
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState(INITIAL_FORM)
   const [medications, setMedications] = useState([{ id: 1, name: '', dose: '', freq: '' }])
+  const [prescriptionImage, setPrescriptionImage] = useState(null)
   const [errors, setErrors] = useState({})
 
   function updateField(key, value) {
@@ -84,10 +85,11 @@ export default function Form({ onSubmit }) {
   const stepContent = {
     1: <PersonalInfo formData={formData} errors={errors} onChange={updateField} today={today} />,
     2: <Medications medications={medications} formData={formData} errors={errors}
-          onChange={updateField} onAddMed={addMed} onRemoveMed={removeMed} onUpdateMed={updateMed} />,
+          onChange={updateField} onAddMed={addMed} onRemoveMed={removeMed} onUpdateMed={updateMed}
+          prescriptionImage={prescriptionImage} onImageChange={setPrescriptionImage} />,
     3: <DoctorInfo formData={formData} errors={errors} onChange={updateField} />,
     4: <DeliveryInfo formData={formData} errors={errors} onChange={updateField} today={today} />,
-    5: <OrderReview formData={formData} medications={medications} />,
+    5: <OrderReview formData={formData} medications={medications} prescriptionImage={prescriptionImage} />,
   }
 
   return (
@@ -107,7 +109,7 @@ export default function Form({ onSubmit }) {
         <NavButtons
           currentStep={currentStep}
           onBack={handleBack}
-          onNext={currentStep === 5 ? () => onSubmit(formData, medications) : handleNext}
+          onNext={currentStep === 5 ? () => onSubmit(formData, medications, prescriptionImage) : handleNext}
         />
       </div>
     </>

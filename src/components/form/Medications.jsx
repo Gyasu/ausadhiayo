@@ -1,9 +1,17 @@
+import { useRef } from 'react'
 import Field from '../ui/Field'
 import Divider from '../ui/Divider'
 import { useLanguage } from '../../LanguageContext'
 
-export default function Medications({ medications, formData, errors, onChange, onAddMed, onRemoveMed, onUpdateMed }) {
+export default function Medications({ medications, formData, errors, onChange, onAddMed, onRemoveMed, onUpdateMed, prescriptionImage, onImageChange }) {
   const { t } = useLanguage()
+  const fileInputRef = useRef(null)
+
+  function handleFile(file) {
+    if (!file) return
+    if (file.size > 5 * 1024 * 1024) return alert('File exceeds 5 MB limit.')
+    onImageChange(file)
+  }
   return (
     <>
       <div className="med-list">
@@ -60,6 +68,53 @@ export default function Medications({ medications, formData, errors, onChange, o
         </svg>
         {t.addMedication}
       </button>
+
+      <div style={{ marginTop: '1.25rem' }}>
+        <Divider label={t.rxImageLabel} />
+        <div style={{ marginTop: '1rem' }}>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/jpeg,image/png,application/pdf"
+            style={{ display: 'none' }}
+            onChange={(e) => handleFile(e.target.files[0])}
+          />
+          {!prescriptionImage ? (
+            <div
+              className="rx-upload-zone"
+              onClick={() => fileInputRef.current.click()}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={(e) => { e.preventDefault(); handleFile(e.dataTransfer.files[0]) }}
+            >
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <div className="rx-upload-text">{t.rxImageDrop}</div>
+              <div className="rx-upload-hint">{t.rxImageFormats}</div>
+            </div>
+          ) : (
+            <div className="rx-preview">
+              {prescriptionImage.type.startsWith('image/') ? (
+                <img src={URL.createObjectURL(prescriptionImage)} alt="Prescription" className="rx-preview-img" />
+              ) : (
+                <div className="rx-preview-pdf">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                  </svg>
+                  <span>{prescriptionImage.name}</span>
+                </div>
+              )}
+              <div className="rx-preview-actions">
+                <button type="button" className="rx-btn-change" onClick={() => fileInputRef.current.click()}>{t.rxImageChange}</button>
+                <button type="button" className="rx-btn-remove" onClick={() => { onImageChange(null); fileInputRef.current.value = '' }}>{t.rxImageRemove}</button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
 
       <div style={{ marginTop: '1.25rem' }}>
         <Divider label={t.allergiesSection} />
