@@ -12,7 +12,7 @@ export default function Header() {
             <path d="M12 8v8M8 12h8"/>
           </svg>
         </div>
-        <span className="logo-name">Medi<span>Route</span></span>
+        <span className="logo-name">Ausadhi<span> Ayo</span></span>
       </a>
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <button className="lang-toggle" onClick={toggleLanguage}>

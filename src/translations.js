@@ -136,7 +136,7 @@ const translations = {
     successStep3: 'First delivery dispatched',
 
     // Footer
-    copyright: '© 2026 MediRoute Inc. — All rights reserved.',
+    copyright: '© 2026 Ausadhi Ayo Inc. — All rights reserved.',
     privacy: 'Privacy Policy',
     terms: 'Terms of Service',
     hipaaNotice: 'HIPAA Notice',
@@ -280,7 +280,7 @@ const translations = {
     successStep3: 'पहिलो डेलिभरी पठाइयो',
 
     // Footer
-    copyright: '© २०२६ MediRoute Inc. — सर्वाधिकार सुरक्षित।',
+    copyright: '© २०२६ Ausadhi Ayo Inc. — सर्वाधिकार सुरक्षित।',
     privacy: 'गोपनीयता नीति',
     terms: 'सेवाका सर्तहरू',
     hipaaNotice: 'HIPAA सूचना',
