@@ -1,6 +1,9 @@
-const STEPS = ['Personal', 'Prescription', 'Doctor', 'Delivery', 'Review']
+import { useLanguage } from '../LanguageContext'
 
 export default function ProgressBar({ currentStep, onStepClick }) {
+  const { t } = useLanguage()
+  const STEPS = [t.stepPersonal, t.stepPrescription, t.stepDoctor, t.stepDelivery, t.stepReview]
+
   return (
     <div className="stepper">
       {STEPS.map((label, i) => {

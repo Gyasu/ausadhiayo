@@ -16,7 +16,10 @@ const CheckIcon = () => (
   </svg>
 )
 
+import { useLanguage } from '../../LanguageContext'
+
 export default function NavButtons({ currentStep, onBack, onNext }) {
+  const { t } = useLanguage()
   const isLast = currentStep === 5
 
   return (
@@ -24,20 +27,20 @@ export default function NavButtons({ currentStep, onBack, onNext }) {
       {currentStep > 1 ? (
         <button className="btn btn-ghost" onClick={onBack}>
           <ArrowLeft />
-          {isLast ? 'Edit' : 'Back'}
+          {isLast ? t.edit : t.back}
         </button>
       ) : (
-        <span className="progress-text">Step 1 of 5</span>
+        <span className="progress-text">{t.step} 1 {t.of} 5</span>
       )}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        {currentStep > 1 && <span className="progress-text">Step {currentStep} of 5</span>}
+        {currentStep > 1 && <span className="progress-text">{t.step} {currentStep} {t.of} 5</span>}
         <button className={`btn ${isLast ? 'btn-success' : 'btn-primary'}`} onClick={onNext}>
           {isLast ? (
-            <><CheckIcon /> Confirm Subscription</>
+            <><CheckIcon /> {t.confirmSubscription}</>
           ) : currentStep === 4 ? (
-            <>Review Order <ArrowRight /></>
+            <>{t.reviewOrder} <ArrowRight /></>
           ) : (
-            <>Continue <ArrowRight /></>
+            <>{t.continue} <ArrowRight /></>
           )}
         </button>
       </div>

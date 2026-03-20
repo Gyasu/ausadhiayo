@@ -1,4 +1,8 @@
+import { useLanguage } from '../LanguageContext'
+
 export default function Header() {
+  const { lang, toggleLanguage, t } = useLanguage()
+
   return (
     <header>
       <a className="logo" href="#">
@@ -10,7 +14,12 @@ export default function Header() {
         </div>
         <span className="logo-name">Medi<span>Route</span></span>
       </a>
-      <div className="header-badge">HIPAA Compliant</div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <button className="lang-toggle" onClick={toggleLanguage}>
+          {lang === 'en' ? '🇳🇵 नेपाली' : '🇬🇧 English'}
+        </button>
+        <div className="header-badge">{t.hipaa}</div>
+      </div>
     </header>
   )
 }
