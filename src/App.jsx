@@ -4,6 +4,8 @@ import Banner from './components/Banner'
 import Footer from './components/Footer'
 import Form from './components/form/Form'
 import Confirmation from './components/Confirmation'
+import ThemeToggle from './components/ThemeToggle'
+import LanguageModal from './components/LanguageModal'
 
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbx-XqxQVECJHVXeYrJP-kyAt-JFnHXfbqOSiS30331KZ5NA0gb5LRxqMG6XtTELkIrB/exec'
 
@@ -36,6 +38,7 @@ export default function App() {
 
   return (
     <>
+      <LanguageModal />
       <Header />
       <Banner />
       {!submitted ? (
@@ -46,6 +49,7 @@ export default function App() {
         <Confirmation confirmationRef={confirmationRef} />
       )}
       <Footer />
+      <ThemeToggle />
     </>
   )
 }
