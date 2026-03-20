@@ -4,7 +4,7 @@ export default function Banner() {
   const { t } = useLanguage()
   return (
     <div className="hero">
-      <div className="hero-eyebrow">{t.eyebrow}</div>
+      <div className="hero-eyebrow">✦ {t.eyebrow} ✦</div>
       <h1>{t.heroTitle1}<br /><em>{t.heroTitle2}</em></h1>
       <p>{t.heroSubtitle}</p>
       <div className="hero-pills">
