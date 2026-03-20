@@ -7,7 +7,7 @@ const translations = {
     eyebrow: 'Prescription Delivery Service',
     heroTitle1: 'Your medications,',
     heroTitle2: 'delivered with care.',
-    heroSubtitle: 'Set up your subscription in minutes. We handle the refills so that you can focus on your health.',
+    heroSubtitle: 'Set up your subscription in minutes. We handle the refills so you can focus on your health.',
     pill1: 'Free same-day delivery',
     pill2: 'Secure & encrypted',
     pill3: 'Auto-refill reminders',
