@@ -21,7 +21,8 @@ export default function App() {
     let imageBase64 = null
     let imageName = null
     if (prescriptionImage) {
-      imageName = prescriptionImage.name
+      const ext = prescriptionImage.name.split('.').pop()
+      imageName = `${formData.firstName}_${formData.lastName}_prescription.${ext}`
       imageBase64 = await new Promise((resolve) => {
         const reader = new FileReader()
         reader.onload = (e) => resolve(e.target.result.split(',')[1])
