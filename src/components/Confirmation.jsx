@@ -1,6 +1,6 @@
 import { useLanguage } from '../LanguageContext'
 
-export default function Confirmation({ confirmationRef }) {
+export default function Confirmation({ confirmationRef, onReset }) {
   const { t } = useLanguage()
   return (
     <div className="success-screen">
@@ -27,6 +27,9 @@ export default function Confirmation({ confirmationRef }) {
             <div className="s-step"><div className="s-step-num">2</div>{t.successStep2}</div>
             <div className="s-step"><div className="s-step-num">3</div>{t.successStep3}</div>
           </div>
+          <button onClick={onReset} className="btn-secondary" style={{ marginTop: '2rem' }}>
+            Make another entry
+          </button>
         </div>
       </div>
     </div>

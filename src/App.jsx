@@ -38,6 +38,12 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  function handleReset() {
+    setSubmitted(false)
+    setConfirmationRef('')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   if (showSplash) return <SplashScreen onDone={() => setShowSplash(false)} />
 
   return (
@@ -50,7 +56,7 @@ export default function App() {
           <Form onSubmit={handleSubmit} />
         </main>
       ) : (
-        <Confirmation confirmationRef={confirmationRef} />
+        <Confirmation confirmationRef={confirmationRef} onReset={handleReset} />
       )}
       <Footer />
       <ThemeToggle />
