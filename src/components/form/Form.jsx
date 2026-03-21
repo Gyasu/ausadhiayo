@@ -53,6 +53,10 @@ export default function Form({ onSubmit }) {
     setMedications(prev => prev.map(m => m.id === id ? { ...m, [key]: value } : m))
   }
 
+  function scrollToForm() {
+    document.getElementById('mainForm')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   function handleNext() {
     const stepErrors = validateStep(currentStep, formData, medications)
     if (Object.keys(stepErrors).length > 0) {
@@ -61,13 +65,13 @@ export default function Form({ onSubmit }) {
     }
     setErrors({})
     setCurrentStep(s => s + 1)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    scrollToForm()
   }
 
   function handleBack() {
     setErrors({})
     setCurrentStep(s => s - 1)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    scrollToForm()
   }
 
   const { t } = useLanguage()
