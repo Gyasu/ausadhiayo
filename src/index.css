@@ -426,6 +426,123 @@ header {
 .rx-btn-change:hover { border-color: var(--accent); color: var(--accent); }
 .rx-btn-remove:hover { border-color: #e05a5a; color: #e05a5a; }
 
+/* ── TRACK ORDER BUTTON (header) ── */
+.track-order-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 7px;
+  padding: 6px 14px;
+  cursor: pointer;
+  border: 1.5px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  transition: all 0.2s;
+}
+.track-order-btn:hover { background: var(--accent); color: white; }
+
+/* ── TRACK ORDER PAGE ── */
+.track-input-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.track-error {
+  color: #e05a5a;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.track-result {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+
+.track-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.track-stepper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.track-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.track-step-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+
+.track-step.active .track-step-icon {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--surface2);
+}
+
+.track-step.current .track-step-icon {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(74,158,221,0.15);
+}
+
+.track-step-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.track-step.active .track-step-label { color: var(--text); }
+.track-step.current .track-step-label { color: var(--accent); }
+
+.track-step-line {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.track-step-line.active { background: var(--accent); }
+
 /* ── MAIN LAYOUT ── */
 main {
   flex: 1;
@@ -433,6 +550,7 @@ main {
   width: 100%;
   margin: 0 auto;
   padding: 2.5rem 1.5rem 4rem;
+  min-height: calc(100vh - 56px - 60px);
 }
 
 /* ── STEPPER ── */

@@ -4,6 +4,7 @@ import Banner from './components/Banner'
 import Footer from './components/Footer'
 import Form from './components/form/Form'
 import Confirmation from './components/Confirmation'
+import TrackOrder from './components/TrackOrder'
 import ThemeToggle from './components/ThemeToggle'
 import LanguageModal from './components/LanguageModal'
 import SplashScreen from './components/SplashScreen'
@@ -14,6 +15,7 @@ export default function App() {
   const [showSplash, setShowSplash] = useState(true)
   const [submitted, setSubmitted] = useState(false)
   const [confirmationRef, setConfirmationRef] = useState('')
+  const [showTracking, setShowTracking] = useState(false)
 
   async function handleSubmit(formData, medications, prescriptionImage) {
     const ref = 'MR-' + Date.now().toString(36).toUpperCase()
@@ -31,6 +33,7 @@ export default function App() {
     }
 
     const payload = {
+      ref,
       ...formData,
       medications: medications
         .filter(m => m.name.trim())
@@ -62,9 +65,13 @@ export default function App() {
   return (
     <>
       <LanguageModal />
-      <Header />
-      <Banner />
-      {!submitted ? (
+      <Header onTrackOrder={() => { setShowTracking(true); setSubmitted(false) }} onHome={() => { setShowTracking(false); setSubmitted(false) }} />
+      {!showTracking && <Banner />}
+      {showTracking ? (
+        <main id="mainForm">
+          <TrackOrder sheetsUrl={SHEETS_URL} />
+        </main>
+      ) : !submitted ? (
         <main id="mainForm">
           <Form onSubmit={handleSubmit} />
         </main>

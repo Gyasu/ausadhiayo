@@ -25,8 +25,8 @@ export function validateStep(step, formData, medications) {
   if (step === 4) {
     if (!formData.street.trim()) errors.street = 'Please enter your street address.'
     if (!formData.city.trim()) errors.city = 'Please enter your city.'
-    if (!formData.state) errors.state = 'Please select your state.'
-    if (!/^\d{5}/.test(formData.zip.trim())) errors.zip = 'Please enter a valid ZIP code.'
+    if (!formData.state) errors.state = 'Please select your district.'
+    if (!/^\d{4,6}/.test(formData.zip.trim())) errors.zip = 'Please enter a valid postal code.'
     if (!formData.firstDelivery) errors.firstDelivery = 'Please select a start date.'
   }
 

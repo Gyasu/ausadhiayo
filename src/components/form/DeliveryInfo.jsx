@@ -15,25 +15,33 @@ export default function DeliveryInfo({ formData, errors, onChange, today }) {
     <div className="form-grid">
       <div className="field full"><Divider label={t.deliveryAddress} /></div>
       <Field label={t.street} required full error={errors.street}>
-        <input type="text" placeholder="123 Maple Street, Apt 4B" {...f('street')} />
+        <input type="text" placeholder="Thamel, Ward No. 26" {...f('street')} />
       </Field>
       <Field label={t.city} required error={errors.city}>
-        <input type="text" placeholder="San Francisco" {...f('city')} />
+        <input type="text" placeholder="Kathmandu" {...f('city')} />
       </Field>
       <Field label={t.state} required error={errors.state}>
         <select {...f('state')}>
           <option value="">{t.selectState}</option>
-          {['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS',
-            'KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY',
-            'NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY'
-          ].map(s => <option key={s}>{s}</option>)}
+          {[
+            'Achham','Arghakhanchi','Baglung','Baitadi','Bajhang','Bajura','Banke','Bara',
+            'Bardiya','Bhaktapur','Bhojpur','Chitwan','Dadeldhura','Dailekh','Dang','Darchula',
+            'Dhading','Dhankuta','Dhanusa','Dolakha','Dolpa','Doti','Eastern Rukum','Gorkha',
+            'Gulmi','Humla','Ilam','Jajarkot','Jhapa','Jumla','Kailali','Kalikot','Kanchanpur',
+            'Kapilvastu','Kaski','Kathmandu','Kavrepalanchok','Khotang','Lalitpur','Lamjung',
+            'Mahottari','Makwanpur','Manang','Morang','Mugu','Mustang','Myagdi','Nawalparasi East',
+            'Nawalparasi West','Nuwakot','Okhaldhunga','Palpa','Panchthar','Parbat','Parsa',
+            'Pyuthan','Ramechhap','Rasuwa','Rautahat','Rolpa','Rukum West','Rupandehi','Salyan',
+            'Sankhuwasabha','Saptari','Sarlahi','Sindhuli','Sindhupalchok','Siraha','Solukhumbu',
+            'Sunsari','Surkhet','Syangja','Tanahu','Taplejung','Tehrathum','Udayapur'
+          ].map(d => <option key={d}>{d}</option>)}
         </select>
       </Field>
       <Field label={t.zip} required error={errors.zip}>
-        <input type="text" placeholder="94105" maxLength="10" {...f('zip')} />
+        <input type="text" placeholder="44600" maxLength="10" {...f('zip')} />
       </Field>
       <Field label={t.delivInstructions} optional>
-        <input type="text" placeholder="Leave at door, ring bell, etc." {...f('delivInstructions')} />
+        <input type="text" placeholder="Near the blue gate, call on arrival, etc." {...f('delivInstructions')} />
       </Field>
       <div className="field full"><Divider label={t.deliverySchedule} /></div>
       <div className="field full">

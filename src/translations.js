@@ -76,8 +76,8 @@ const translations = {
     deliverySchedule: 'Delivery Schedule',
     street: 'Street Address',
     city: 'City',
-    state: 'State',
-    zip: 'ZIP Code',
+    state: 'District',
+    zip: 'Postal Code',
     delivInstructions: 'Delivery Instructions',
     delivFrequency: 'Delivery Frequency',
     weekly: 'Weekly',
@@ -122,7 +122,7 @@ const translations = {
     // Placeholders
     optional: 'optional',
     selectSpecialty: 'Select specialty…',
-    selectState: 'Select state…',
+    selectState: 'Select district…',
     selectDay: 'No preference',
 
     // Frequency options
@@ -140,6 +140,23 @@ const translations = {
     successStep1: 'Prescription verification (24 hrs)',
     successStep2: 'Insurance processing',
     successStep3: 'First delivery dispatched',
+
+    // Track Order
+    trackOrder: 'Track Order',
+    trackTitle: 'Track Your Order',
+    trackDesc: 'Enter your confirmation number to check your delivery status.',
+    trackPlaceholder: 'e.g. MR-ABC123',
+    trackBtn: 'Track',
+    trackNotFound: 'No order found with that confirmation number.',
+    trackError: 'Could not fetch order. Please try again.',
+    trackStatusLabel: 'Current Status',
+    trackName: 'Patient',
+    trackMeds: 'Medications',
+    trackDelivery: 'First Delivery',
+    statusPending: 'Pending',
+    statusVerified: 'Verified',
+    statusDispatched: 'Dispatched',
+    statusDelivered: 'Delivered',
 
     // Footer
     copyright: '© 2026 Ausadhi Ayo Inc. — All rights reserved.',
@@ -220,8 +237,8 @@ const translations = {
     deliverySchedule: 'डेलिभरी तालिका',
     street: 'सडक ठेगाना',
     city: 'शहर',
-    state: 'राज्य',
-    zip: 'ZIP कोड',
+    state: 'जिल्ला',
+    zip: 'हुलाक कोड',
     delivInstructions: 'डेलिभरी निर्देशनहरू',
     delivFrequency: 'डेलिभरी आवृत्ति',
     weekly: 'साप्ताहिक',
@@ -266,7 +283,7 @@ const translations = {
     // Placeholders
     optional: 'वैकल्पिक',
     selectSpecialty: 'विशेषता छान्नुहोस्…',
-    selectState: 'राज्य छान्नुहोस्…',
+    selectState: 'जिल्ला छान्नुहोस्…',
     selectDay: 'कुनै प्राथमिकता छैन',
 
     // Frequency options
@@ -284,6 +301,23 @@ const translations = {
     successStep1: 'प्रिस्क्रिप्सन प्रमाणीकरण (२४ घण्टा)',
     successStep2: 'बीमा प्रक्रिया',
     successStep3: 'पहिलो डेलिभरी पठाइयो',
+
+    // Track Order
+    trackOrder: 'अर्डर ट्र्याक',
+    trackTitle: 'आफ्नो अर्डर ट्र्याक गर्नुहोस्',
+    trackDesc: 'डेलिभरी स्थिति जाँच्न आफ्नो पुष्टि नम्बर प्रविष्ट गर्नुहोस्।',
+    trackPlaceholder: 'जस्तै MR-ABC123',
+    trackBtn: 'ट्र्याक',
+    trackNotFound: 'त्यो पुष्टि नम्बरसँग कुनै अर्डर फेला परेन।',
+    trackError: 'अर्डर ल्याउन सकिएन। कृपया पुनः प्रयास गर्नुहोस्।',
+    trackStatusLabel: 'हालको स्थिति',
+    trackName: 'बिरामी',
+    trackMeds: 'औषधिहरू',
+    trackDelivery: 'पहिलो डेलिभरी',
+    statusPending: 'पेन्डिङ',
+    statusVerified: 'प्रमाणित',
+    statusDispatched: 'पठाइयो',
+    statusDelivered: 'डेलिभर भयो',
 
     // Footer
     copyright: '© २०२६ Ausadhi Ayo Inc. — सर्वाधिकार सुरक्षित।',
