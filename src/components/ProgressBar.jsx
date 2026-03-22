@@ -2,7 +2,7 @@ import { useLanguage } from '../LanguageContext'
 
 export default function ProgressBar({ currentStep, onStepClick }) {
   const { t } = useLanguage()
-  const STEPS = [t.stepPersonal, t.stepPrescription, t.stepDoctor, t.stepDelivery, t.stepReview]
+  const STEPS = [t.stepPersonal, t.stepPrescription, t.stepDelivery, t.stepReview]
 
   return (
     <div className="stepper">
@@ -24,7 +24,7 @@ export default function ProgressBar({ currentStep, onStepClick }) {
               </div>
               <div className="step-label">{label}</div>
             </div>
-            {num < 5 && (
+            {num < 4 && (
               <div className={`step-connector${isDone ? ' done' : ''}`} />
             )}
           </div>

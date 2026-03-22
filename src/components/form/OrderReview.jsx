@@ -24,10 +24,6 @@ export default function OrderReview({ formData, medications, prescriptionImage }
           <ReviewItem label={t.dob} value={formatDate(d.dob)} />
           <ReviewItem label={t.phone} value={d.phone} />
           <ReviewItem label={t.email} value={d.email} />
-          {d.insurance && (
-            <ReviewItem label={t.insurance} full
-              value={`${d.insurance}${d.memberId ? ' · Member #' + d.memberId : ''}`} />
-          )}
         </div>
       </div>
 
@@ -45,6 +41,7 @@ export default function OrderReview({ formData, medications, prescriptionImage }
             </div>
           </div>
           {d.allergies && <ReviewItem label={t.allergies} value={d.allergies} full />}
+          {d.conditions && <ReviewItem label={t.conditionsLabel} value={d.conditions} full />}
           {prescriptionImage && (
             <div className="review-item full">
               <div className="ri-label">{t.rxImageLabel}</div>
@@ -63,11 +60,10 @@ export default function OrderReview({ formData, medications, prescriptionImage }
       <div className="review-section">
         <div className="review-section-title">{t.reviewDoctor}</div>
         <div className="review-grid">
-          <ReviewItem label={t.doctor} value={d.docName} />
-          <ReviewItem label={t.doctorPhone} value={d.docPhone} />
+          {d.docName && <ReviewItem label={t.doctor} value={d.docName} />}
           {d.clinicName && <ReviewItem label={t.clinic} value={d.clinicName} full />}
           {d.pharmName && <ReviewItem label={t.currentPharmacy} value={d.pharmName} />}
-          {d.rxNum && <ReviewItem label={t.rxNum} value={d.rxNum} />}
+          {d.pharmPhone && <ReviewItem label={t.pharmPhone} value={d.pharmPhone} />}
         </div>
       </div>
 

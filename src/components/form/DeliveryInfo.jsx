@@ -14,13 +14,13 @@ export default function DeliveryInfo({ formData, errors, onChange, today }) {
   return (
     <div className="form-grid">
       <div className="field full"><Divider label={t.deliveryAddress} /></div>
-      <Field label={t.street} required full error={errors.street}>
+      <Field label="Address" required full error={errors.street}>
         <input type="text" placeholder="Thamel, Ward No. 26" {...f('street')} />
       </Field>
-      <Field label={t.city} required error={errors.city}>
+      <Field label="City" required error={errors.city}>
         <input type="text" placeholder="Kathmandu" {...f('city')} />
       </Field>
-      <Field label={t.state} required error={errors.state}>
+      <Field label="District" optional>
         <select {...f('state')}>
           <option value="">{t.selectState}</option>
           {[
@@ -37,21 +37,21 @@ export default function DeliveryInfo({ formData, errors, onChange, today }) {
           ].map(d => <option key={d}>{d}</option>)}
         </select>
       </Field>
-      <Field label={t.zip} required error={errors.zip}>
-        <input type="text" placeholder="44600" maxLength="10" {...f('zip')} />
+      <Field label="Nearby Landmark" optional>
+        <input type="text" placeholder="e.g. Next to Bhatbhateni, near the temple…" {...f('delivInstructions')} />
       </Field>
-      <Field label={t.delivInstructions} optional>
-        <input type="text" placeholder="Near the blue gate, call on arrival, etc." {...f('delivInstructions')} />
+      <Field label="Additional Instructions" optional>
+        <input type="text" placeholder="Near the blue gate, call on arrival, etc." {...f('delivNotes')} />
       </Field>
       <div className="field full"><Divider label={t.deliverySchedule} /></div>
       <div className="field full">
         <label>{t.delivFrequency} <span className="req">*</span></label>
         <div className="radio-group">
-          <RadioCard name="frequency" id="freq1" value="Weekly" label={t.weekly} icon="📅"
+          <RadioCard name="frequency" id="freq1" value="Weekly" label="Weekly" icon="📅"
             checked={formData.frequency === 'Weekly'} onChange={(v) => onChange('frequency', v)} />
-          <RadioCard name="frequency" id="freq2" value="Bi-weekly" label={t.biweekly} icon="📆"
-            checked={formData.frequency === 'Bi-weekly'} onChange={(v) => onChange('frequency', v)} />
-          <RadioCard name="frequency" id="freq3" value="Monthly" label={t.monthly} icon="🗓️"
+          <RadioCard name="frequency" id="freq2" value="Once in 2 weeks" label="Once in 2 weeks" icon="📆"
+            checked={formData.frequency === 'Once in 2 weeks'} onChange={(v) => onChange('frequency', v)} />
+          <RadioCard name="frequency" id="freq3" value="Monthly" label="Monthly" icon="🗓️"
             checked={formData.frequency === 'Monthly'} onChange={(v) => onChange('frequency', v)} />
         </div>
       </div>

@@ -22,8 +22,8 @@ const INITIAL_FORM = {
   allergies: '', conditions: '',
   docName: '', clinicName: '',
   pharmName: '', pharmPhone: '',
-  street: '', city: '', state: '', zip: '', delivInstructions: '',
-  frequency: 'Bi-weekly', delivDay: '', delivTime: '', firstDelivery: '',
+  street: '', city: '', state: '', delivInstructions: '', delivNotes: '',
+  frequency: 'Once in 2 weeks', delivDay: '', delivTime: '', firstDelivery: '',
 }
 
 export default function Form({ onSubmit, isSubmitting }) {
