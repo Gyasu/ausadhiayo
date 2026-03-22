@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Field from '../ui/Field'
 import Divider from '../ui/Divider'
 import { useLanguage } from '../../LanguageContext'
@@ -6,11 +6,14 @@ import { useLanguage } from '../../LanguageContext'
 export default function Medications({ medications, formData, errors, onChange, onAddMed, onRemoveMed, onUpdateMed, prescriptionImage, onImageChange }) {
   const { t } = useLanguage()
   const fileInputRef = useRef(null)
+  const cameraInputRef = useRef(null)
+  const [showUploadOptions, setShowUploadOptions] = useState(false)
 
   function handleFile(file) {
     if (!file) return
     if (file.size > 5 * 1024 * 1024) return alert('File exceeds 5 MB limit.')
     onImageChange(file)
+    setShowUploadOptions(false)
   }
 
   const f = (key) => ({
@@ -32,21 +35,69 @@ export default function Medications({ medications, formData, errors, onChange, o
             style={{ display: 'none' }}
             onChange={(e) => handleFile(e.target.files[0])}
           />
+          <input
+            ref={cameraInputRef}
+            type="file"
+            accept="image/*"
+            capture="environment"
+            style={{ display: 'none' }}
+            onChange={(e) => handleFile(e.target.files[0])}
+          />
           {!prescriptionImage ? (
-            <div
-              className="rx-upload-zone"
-              onClick={() => fileInputRef.current.click()}
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={(e) => { e.preventDefault(); handleFile(e.dataTransfer.files[0]) }}
-            >
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-                <polyline points="17 8 12 3 7 8"/>
-                <line x1="12" y1="3" x2="12" y2="15"/>
-              </svg>
-              <div className="rx-upload-text">{t.rxImageDrop}</div>
-              <div className="rx-upload-hint">{t.rxImageFormats}</div>
-            </div>
+            <>
+              {!showUploadOptions ? (
+                <div
+                  className="rx-upload-zone"
+                  onClick={() => setShowUploadOptions(true)}
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={(e) => { e.preventDefault(); handleFile(e.dataTransfer.files[0]) }}
+                >
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                  </svg>
+                  <div className="rx-upload-text">{t.rxImageDrop}</div>
+                  <div className="rx-upload-hint">{t.rxImageFormats}</div>
+                </div>
+              ) : (
+                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                  <button
+                    type="button"
+                    className="rx-option-btn"
+                    onClick={() => fileInputRef.current.click()}
+                    style={{ flex: 1, minWidth: '140px', padding: '16px', border: '1.5px dashed var(--border)', borderRadius: '10px', background: 'var(--surface)', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', color: 'var(--text)' }}
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                      <polyline points="17 8 12 3 7 8"/>
+                      <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <span style={{ fontSize: '0.85rem', fontWeight: 500 }}>Upload File</span>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>JPG, PNG or PDF</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => cameraInputRef.current.click()}
+                    style={{ flex: 1, minWidth: '140px', padding: '16px', border: '1.5px dashed var(--border)', borderRadius: '10px', background: 'var(--surface)', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', color: 'var(--text)' }}
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+                      <circle cx="12" cy="13" r="4"/>
+                    </svg>
+                    <span style={{ fontSize: '0.85rem', fontWeight: 500 }}>Take Photo</span>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Use your camera</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowUploadOptions(false)}
+                    style={{ width: '100%', padding: '8px', background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '0.85rem' }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              )}
+            </>
           ) : (
             <div className="rx-preview">
               {prescriptionImage.type.startsWith('image/') ? (
@@ -61,8 +112,8 @@ export default function Medications({ medications, formData, errors, onChange, o
                 </div>
               )}
               <div className="rx-preview-actions">
-                <button type="button" className="rx-btn-change" onClick={() => fileInputRef.current.click()}>{t.rxImageChange}</button>
-                <button type="button" className="rx-btn-remove" onClick={() => { onImageChange(null); fileInputRef.current.value = '' }}>{t.rxImageRemove}</button>
+                <button type="button" className="rx-btn-change" onClick={() => setShowUploadOptions(true)}>{t.rxImageChange}</button>
+                <button type="button" className="rx-btn-remove" onClick={() => { onImageChange(null); fileInputRef.current.value = ''; cameraInputRef.current.value = '' }}>{t.rxImageRemove}</button>
               </div>
             </div>
           )}
