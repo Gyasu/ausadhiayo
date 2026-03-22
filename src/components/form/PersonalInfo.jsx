@@ -26,15 +26,6 @@ export default function PersonalInfo({ formData, errors, onChange, today }) {
       <Field label={t.email} required full error={errors.email}>
         <input type="email" id="email" placeholder="jane.smith@email.com" {...f('email')} />
       </Field>
-      <Field label={t.insurance} optional full>
-        <input type="text" id="insurance" placeholder="e.g. Blue Cross Blue Shield, Aetna, Cigna…" {...f('insurance')} />
-      </Field>
-      <Field label={t.memberId} optional>
-        <input type="text" id="memberId" placeholder="Policy / Member ID" {...f('memberId')} />
-      </Field>
-      <Field label={t.groupNum} optional>
-        <input type="text" id="groupNum" placeholder="Group number" {...f('groupNum')} />
-      </Field>
     </div>
   )
 }

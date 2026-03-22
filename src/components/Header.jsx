@@ -19,7 +19,6 @@ export default function Header({ onTrackOrder, onHome }) {
         <button className="lang-toggle" onClick={toggleLanguage}>
           {lang === 'en' ? '🇳🇵 नेपाली' : '🇬🇧 English'}
         </button>
-        <div className="header-badge">{t.hipaa}</div>
       </div>
     </header>
   )
