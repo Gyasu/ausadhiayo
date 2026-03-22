@@ -17,12 +17,6 @@ export function validateStep(step, formData, medications) {
   }
 
   if (step === 3) {
-    if (!formData.docName.trim()) errors.docName = "Please enter your doctor's name."
-    if (!/^(98|97|96|01)\d{7,8}$/.test(formData.docPhone.trim()))
-      errors.docPhone = "Please enter a valid Nepali phone number (e.g. 98XXXXXXXX or 01XXXXXXX)."
-  }
-
-  if (step === 4) {
     if (!formData.street.trim()) errors.street = 'Please enter your street address.'
     if (!formData.city.trim()) errors.city = 'Please enter your city.'
     if (!formData.state) errors.state = 'Please select your district.'
