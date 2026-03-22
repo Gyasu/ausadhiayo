@@ -21,7 +21,7 @@ export default function PersonalInfo({ formData, errors, onChange, today }) {
         <input type="date" id="dob" max={today} {...f('dob')} />
       </Field>
       <Field label={t.phone} required error={errors.phone}>
-        <input type="tel" id="phone" placeholder="(555) 000-0000" {...f('phone')} />
+        <input type="tel" id="phone" placeholder="98XXXXXXXX" maxLength="10" {...f('phone')} />
       </Field>
       <Field label={t.email} required full error={errors.email}>
         <input type="email" id="email" placeholder="jane.smith@email.com" {...f('email')} />

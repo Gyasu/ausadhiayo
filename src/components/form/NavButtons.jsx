@@ -18,14 +18,20 @@ const CheckIcon = () => (
 
 import { useLanguage } from '../../LanguageContext'
 
-export default function NavButtons({ currentStep, onBack, onNext }) {
+const Spinner = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="spin">
+    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+  </svg>
+)
+
+export default function NavButtons({ currentStep, onBack, onNext, isSubmitting }) {
   const { t } = useLanguage()
   const isLast = currentStep === 5
 
   return (
     <div className="form-nav">
       {currentStep > 1 ? (
-        <button className="btn btn-ghost" onClick={onBack}>
+        <button className="btn btn-ghost" onClick={onBack} disabled={isSubmitting}>
           <ArrowLeft />
           {isLast ? t.edit : t.back}
         </button>
@@ -34,8 +40,10 @@ export default function NavButtons({ currentStep, onBack, onNext }) {
       )}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         {currentStep > 1 && <span className="progress-text">{t.step} {currentStep} {t.of} 5</span>}
-        <button className={`btn ${isLast ? 'btn-success' : 'btn-primary'}`} onClick={onNext}>
-          {isLast ? (
+        <button className={`btn ${isLast ? 'btn-success' : 'btn-primary'}`} onClick={onNext} disabled={isSubmitting}>
+          {isLast && isSubmitting ? (
+            <><Spinner /> Submitting…</>
+          ) : isLast ? (
             <><CheckIcon /> {t.confirmSubscription}</>
           ) : currentStep === 4 ? (
             <>{t.reviewOrder} <ArrowRight /></>

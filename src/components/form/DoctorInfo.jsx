@@ -31,20 +31,20 @@ export default function DoctorInfo({ formData, errors, onChange }) {
         </select>
       </Field>
       <Field label={t.docPhone} required error={errors.docPhone}>
-        <input type="tel" placeholder="(555) 000-0000" {...f('docPhone')} />
+        <input type="tel" placeholder="98XXXXXXXX" maxLength="10" {...f('docPhone')} />
       </Field>
       <Field label={t.docFax} optional>
-        <input type="tel" placeholder="(555) 000-0000" {...f('docFax')} />
+        <input type="tel" placeholder="01XXXXXXX" {...f('docFax')} />
       </Field>
       <Field label={t.clinicName} optional full>
-        <input type="text" placeholder="e.g. Bay Area Medical Center" {...f('clinicName')} />
+        <input type="text" placeholder="e.g. Bir Hospital, TUTH, local clinic…" {...f('clinicName')} />
       </Field>
       <div className="field full"><Divider label={t.pharmacySection} /></div>
       <Field label={t.pharmName} optional full>
-        <input type="text" placeholder="e.g. CVS Pharmacy, Walgreens, local pharmacy…" {...f('pharmName')} />
+        <input type="text" placeholder="e.g. Osan Pharmacy, local pharmacy…" {...f('pharmName')} />
       </Field>
       <Field label={t.pharmPhone} optional>
-        <input type="tel" placeholder="(555) 000-0000" {...f('pharmPhone')} />
+        <input type="tel" placeholder="98XXXXXXXX" maxLength="10" {...f('pharmPhone')} />
       </Field>
       <Field label={t.rxNum} optional>
         <input type="text" placeholder="Prescription number" {...f('rxNum')} />

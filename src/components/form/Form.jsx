@@ -29,12 +29,13 @@ const INITIAL_FORM = {
   frequency: 'Bi-weekly', delivDay: '', delivTime: '', firstDelivery: '',
 }
 
-export default function Form({ onSubmit }) {
+export default function Form({ onSubmit, isSubmitting }) {
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState(INITIAL_FORM)
   const [medications, setMedications] = useState([{ id: 1, name: '', dose: '', freq: '' }])
   const [prescriptionImage, setPrescriptionImage] = useState(null)
   const [errors, setErrors] = useState({})
+  const [slideDir, setSlideDir] = useState('right')
 
   function updateField(key, value) {
     setFormData(prev => ({ ...prev, [key]: value }))
@@ -64,12 +65,14 @@ export default function Form({ onSubmit }) {
       return
     }
     setErrors({})
+    setSlideDir('right')
     setCurrentStep(s => s + 1)
     scrollToForm()
   }
 
   function handleBack() {
     setErrors({})
+    setSlideDir('left')
     setCurrentStep(s => s - 1)
     scrollToForm()
   }
@@ -108,12 +111,15 @@ export default function Form({ onSubmit }) {
           <p>{header.desc}</p>
         </div>
         <div className="card-body">
-          {stepContent[currentStep]}
+          <div key={currentStep} className={`step-slide step-slide-${slideDir}`}>
+            {stepContent[currentStep]}
+          </div>
         </div>
         <NavButtons
           currentStep={currentStep}
           onBack={handleBack}
           onNext={currentStep === 5 ? () => onSubmit(formData, medications, prescriptionImage) : handleNext}
+          isSubmitting={isSubmitting}
         />
       </div>
     </>

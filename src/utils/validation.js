@@ -5,8 +5,8 @@ export function validateStep(step, formData, medications) {
     if (!formData.firstName.trim()) errors.firstName = 'Please enter your first name.'
     if (!formData.lastName.trim()) errors.lastName = 'Please enter your last name.'
     if (!formData.dob) errors.dob = 'Please enter your date of birth.'
-    if (!formData.phone.trim() || formData.phone.trim().length < 7)
-      errors.phone = 'Please enter a valid phone number.'
+    if (!/^(98|97|96)\d{8}$/.test(formData.phone.trim()))
+      errors.phone = 'Please enter a valid Nepali mobile number (e.g. 98XXXXXXXX).'
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       errors.email = 'Please enter a valid email address.'
   }
@@ -18,8 +18,8 @@ export function validateStep(step, formData, medications) {
 
   if (step === 3) {
     if (!formData.docName.trim()) errors.docName = "Please enter your doctor's name."
-    if (!formData.docPhone.trim() || formData.docPhone.trim().length < 7)
-      errors.docPhone = "Please enter your doctor's phone number."
+    if (!/^(98|97|96|01)\d{7,8}$/.test(formData.docPhone.trim()))
+      errors.docPhone = "Please enter a valid Nepali phone number (e.g. 98XXXXXXXX or 01XXXXXXX)."
   }
 
   if (step === 4) {

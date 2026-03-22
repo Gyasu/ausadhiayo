@@ -16,8 +16,10 @@ export default function App() {
   const [submitted, setSubmitted] = useState(false)
   const [confirmationRef, setConfirmationRef] = useState('')
   const [showTracking, setShowTracking] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   async function handleSubmit(formData, medications, prescriptionImage) {
+    setIsSubmitting(true)
     const ref = 'MR-' + Date.now().toString(36).toUpperCase()
 
     let imageBase64 = null
@@ -49,7 +51,10 @@ export default function App() {
       body: JSON.stringify(payload),
     }).catch(err => console.error('Failed to save to Google Sheets:', err))
 
+    await new Promise(r => setTimeout(r, 1200))
+
     setConfirmationRef(ref)
+    setIsSubmitting(false)
     setSubmitted(true)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -73,7 +78,7 @@ export default function App() {
         </main>
       ) : !submitted ? (
         <main id="mainForm">
-          <Form onSubmit={handleSubmit} />
+          <Form onSubmit={handleSubmit} isSubmitting={isSubmitting} />
         </main>
       ) : (
         <Confirmation confirmationRef={confirmationRef} onReset={handleReset} />
