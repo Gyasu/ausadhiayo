@@ -5,9 +5,11 @@ import {
   sendPasswordResetEmail,
 } from 'firebase/auth'
 import { auth } from '../firebase'
+import { useLanguage } from '../LanguageContext'
 
 export default function AuthScreen() {
-  const [mode, setMode] = useState('login') // 'login' | 'register' | 'reset'
+  const { t } = useLanguage()
+  const [mode, setMode] = useState('login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirm, setConfirm] = useState('')
@@ -68,19 +70,17 @@ export default function AuthScreen() {
                 <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
               </svg>
             </div>
-            <h2>{mode === 'login' ? 'Welcome' : mode === 'register' ? 'Create account' : 'Reset password'}</h2>
+            <h2>{mode === 'login' ? t.authWelcome : mode === 'register' ? t.authCreate : t.authReset}</h2>
           </div>
           <p style={{ marginBottom: 0 }}>
-            {mode === 'login' ? 'Sign in to access your saved prescription profile.' :
-             mode === 'register' ? 'Register to save your details for future refills.' :
-             'Enter your email and we\'ll send a reset link.'}
+            {mode === 'login' ? t.authLoginDesc : mode === 'register' ? t.authRegisterDesc : t.authResetDesc}
           </p>
         </div>
 
         <div className="card-body" style={{ paddingTop: '1rem' }}>
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             <div className="field">
-              <label>Email Address <span className="req">*</span></label>
+              <label>{t.authEmail} <span className="req">*</span></label>
               <input
                 type="email"
                 placeholder="you@example.com"
@@ -92,7 +92,7 @@ export default function AuthScreen() {
 
             {mode !== 'reset' && (
               <div className="field">
-                <label>Password <span className="req">*</span></label>
+                <label>{t.authPassword} <span className="req">*</span></label>
                 <input
                   type="password"
                   placeholder="Min. 6 characters"
@@ -105,7 +105,7 @@ export default function AuthScreen() {
 
             {mode === 'register' && (
               <div className="field">
-                <label>Confirm Password <span className="req">*</span></label>
+                <label>{t.authConfirmPassword} <span className="req">*</span></label>
                 <input
                   type="password"
                   placeholder="Repeat password"
@@ -121,8 +121,8 @@ export default function AuthScreen() {
 
             <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} disabled={loading}>
               {loading ? '...' :
-               mode === 'login' ? 'Sign In' :
-               mode === 'register' ? 'Create Account' : 'Send Reset Link'}
+               mode === 'login' ? t.authSignIn :
+               mode === 'register' ? t.authCreateAccount : t.authSendReset}
             </button>
           </form>
 
@@ -130,16 +130,16 @@ export default function AuthScreen() {
             {mode === 'login' && (
               <>
                 <button className="auth-link" onClick={() => { setMode('register'); setError('') }}>
-                  Don't have an account? <strong>Register</strong>
+                  {t.authNoAccount} <strong>{t.authRegisterLink}</strong>
                 </button>
                 <button className="auth-link" onClick={() => { setMode('reset'); setError('') }}>
-                  Forgot password?
+                  {t.authForgotPassword}
                 </button>
               </>
             )}
             {mode !== 'login' && (
               <button className="auth-link" onClick={() => { setMode('login'); setError('') }}>
-                Already have an account? <strong>Sign In</strong>
+                {t.authHaveAccount} <strong>{t.authSignIn}</strong>
               </button>
             )}
           </div>

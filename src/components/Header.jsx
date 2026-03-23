@@ -22,7 +22,7 @@ export default function Header({ onTrackOrder, onHome, user, onSignOut }) {
         {user && (
           <>
             <span className="header-user header-badge">{user.email}</span>
-            <button className="track-order-btn" onClick={onSignOut}>Sign Out</button>
+            <button className="track-order-btn" onClick={onSignOut}>{t.authSignOut}</button>
           </>
         )}
         {!user && <div className="header-badge">{t.hipaa}</div>}

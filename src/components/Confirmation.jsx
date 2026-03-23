@@ -28,7 +28,7 @@ export default function Confirmation({ confirmationRef, onReset }) {
             <div className="s-step"><div className="s-step-num">3</div>{t.successStep3}</div>
           </div>
           <button onClick={onReset} className="btn-secondary" style={{ marginTop: '2rem' }}>
-            Make another entry
+            {t.authMakeAnother}
           </button>
         </div>
       </div>
