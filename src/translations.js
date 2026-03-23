@@ -1,8 +1,5 @@
 const translations = {
   en: {
-    // Header
-    hipaa: 'HIPAA Compliant',
-
     // Banner
     eyebrow: 'Prescription Delivery Service',
     heroTitle1: 'Your medications,',
@@ -16,7 +13,6 @@ const translations = {
     // Stepper
     stepPersonal: 'Personal',
     stepPrescription: 'Prescription',
-    stepDoctor: 'Doctor',
     stepDelivery: 'Delivery',
     stepReview: 'Review',
 
@@ -25,12 +21,10 @@ const translations = {
     step1Desc: 'We need your basic details to create your patient account.',
     step2Title: 'Prescription Details',
     step2Desc: "Enter each medication you'd like delivered. You can add multiple.",
-    step3Title: 'Doctor & Pharmacy Info',
-    step3Desc: 'Help us contact your prescribing physician and transfer your prescription.',
-    step4Title: 'Delivery Preferences',
-    step4Desc: 'Tell us where and when to bring your medications.',
-    step5Title: 'Review Your Subscription',
-    step5Desc: 'Please confirm everything looks correct before submitting.',
+    step3Title: 'Delivery Preferences',
+    step3Desc: 'Tell us where and when to bring your medications.',
+    step4Title: 'Review Your Subscription',
+    step4Desc: 'Please confirm everything looks correct before submitting.',
 
     // Personal Info fields
     firstName: 'First Name',
@@ -38,11 +32,8 @@ const translations = {
     dob: 'Date of Birth',
     phone: 'Phone Number',
     email: 'Email Address',
-    insurance: 'Insurance Provider',
-    memberId: 'Member ID',
-    groupNum: 'Group Number',
 
-    // Prescriptions fields
+    // Prescription fields
     medicationName: 'Medication Name',
     dosage: 'Dosage',
     frequency: 'Frequency',
@@ -59,29 +50,23 @@ const translations = {
     allergiesPlaceholder: 'e.g. Penicillin, Sulfa drugs, NSAIDs…',
     conditionsPlaceholder: 'e.g. Type 2 Diabetes, Hypertension, Asthma…',
 
-    // Doctor fields
+    // Doctor & Pharmacy fields
     doctorSection: 'Prescribing Doctor',
     pharmacySection: 'Current Pharmacy',
     docName: "Doctor's Full Name",
-    specialty: 'Specialty',
-    docPhone: "Doctor's Phone",
-    docFax: "Doctor's Fax",
     clinicName: 'Clinic / Hospital Name',
     pharmName: 'Pharmacy Name',
     pharmPhone: 'Pharmacy Phone',
-    rxNum: 'Rx Number',
 
     // Delivery fields
     deliveryAddress: 'Delivery Address',
     deliverySchedule: 'Delivery Schedule',
-    street: 'Street Address',
+    street: 'Address',
     city: 'City',
     state: 'District',
-    zip: 'Postal Code',
-    delivInstructions: 'Delivery Instructions',
+    delivInstructions: 'Nearby Landmark',
     delivFrequency: 'Delivery Frequency',
     weekly: 'Weekly',
-    biweekly: 'Bi-weekly',
     monthly: 'Monthly',
     delivDay: 'Preferred Delivery Day',
     delivTime: 'Preferred Time Window',
@@ -101,7 +86,6 @@ const translations = {
     prescriptions: 'Prescriptions',
     allergies: 'Allergies',
     doctor: 'Doctor',
-    doctorPhone: "Doctor's Phone",
     clinic: 'Clinic',
     currentPharmacy: 'Current Pharmacy',
     address: 'Address',
@@ -109,6 +93,14 @@ const translations = {
     firstDeliveryLabel: 'First Delivery',
     preferredDay: 'Preferred Day',
     timeWindow: 'Time Window',
+
+    // Subscription plans
+    subscriptionTitle: 'Choose Your Subscription Plan',
+    plan6monthLabel: '6-Month Plan',
+    plan1yearLabel: '1-Year Plan',
+    planBestValue: 'Best Value',
+    paymentNoticeTitle: 'What happens next?',
+    paymentNoticeBody: "After you submit, we'll review your medications and send an eSewa payment link along with a personalized quote to your phone. Once we confirm your payment, we'll send a confirmation text and begin your deliveries.",
 
     // Buttons
     continue: 'Continue',
@@ -121,7 +113,6 @@ const translations = {
 
     // Placeholders
     optional: 'optional',
-    selectSpecialty: 'Select specialty…',
     selectState: 'Select district…',
     selectDay: 'No preference',
 
@@ -138,7 +129,7 @@ const translations = {
     successDesc: 'Your prescription delivery subscription has been received. Our team will verify your prescription within 24 hours and confirm your first delivery.',
     confirmationNumber: 'Confirmation Number',
     successStep1: 'Prescription verification (24 hrs)',
-    successStep2: 'Insurance processing',
+    successStep2: 'eSewa payment confirmation',
     successStep3: 'First delivery dispatched',
 
     // Track Order
@@ -158,38 +149,14 @@ const translations = {
     statusDispatched: 'Dispatched',
     statusDelivered: 'Delivered',
 
-    // Auth
-    authWelcome: 'Welcome',
-    authCreate: 'Create account',
-    authReset: 'Reset password',
-    authLoginDesc: 'Sign in to access your saved prescription profile.',
-    authRegisterDesc: 'Register to save your details for future refills.',
-    authResetDesc: "Enter your email and we'll send a reset link.",
-    authEmail: 'Email Address',
-    authPassword: 'Password',
-    authConfirmPassword: 'Confirm Password',
-    authSignIn: 'Sign In',
-    authCreateAccount: 'Create Account',
-    authSendReset: 'Send Reset Link',
-    authNoAccount: "Don't have an account?",
-    authRegisterLink: 'Register',
-    authForgotPassword: 'Forgot password?',
-    authHaveAccount: 'Already have an account?',
-    authSignOut: 'Sign Out',
-    authMakeAnother: 'Make another entry',
-
     // Footer
-    copyright: '© 2026 Ausadhi Ayo Inc. — All rights reserved.',
+    copyright: '© 2026 Ausadhi Ayo — All rights reserved.',
     privacy: 'Privacy Policy',
     terms: 'Terms of Service',
-    hipaaNotice: 'HIPAA Notice',
     contact: 'Contact Support',
   },
 
   ne: {
-    // Header
-    hipaa: 'HIPAA अनुरूप',
-
     // Banner
     eyebrow: 'प्रिस्क्रिप्सन डेलिभरी सेवा',
     heroTitle1: 'तपाईंको औषधि,',
@@ -203,7 +170,6 @@ const translations = {
     // Stepper
     stepPersonal: 'व्यक्तिगत',
     stepPrescription: 'प्रिस्क्रिप्सन',
-    stepDoctor: 'डाक्टर',
     stepDelivery: 'डेलिभरी',
     stepReview: 'समीक्षा',
 
@@ -212,12 +178,10 @@ const translations = {
     step1Desc: 'तपाईंको बिरामी खाता सिर्जना गर्न हामीलाई तपाईंको आधारभूत विवरण चाहिन्छ।',
     step2Title: 'प्रिस्क्रिप्सन विवरण',
     step2Desc: 'तपाईंले डेलिभर गर्न चाहनुभएको प्रत्येक औषधि प्रविष्ट गर्नुहोस्। तपाईं धेरै थप्न सक्नुहुन्छ।',
-    step3Title: 'डाक्टर र फार्मेसी जानकारी',
-    step3Desc: 'तपाईंको प्रिस्क्राइबिङ चिकित्सकसँग सम्पर्क गर्न र प्रिस्क्रिप्सन स्थानान्तरण गर्न हामीलाई मद्दत गर्नुहोस्।',
-    step4Title: 'डेलिभरी प्राथमिकताहरू',
-    step4Desc: 'तपाईंको औषधि कहाँ र कहिले ल्याउने भनेर हामीलाई बताउनुहोस्।',
-    step5Title: 'तपाईंको सदस्यता समीक्षा',
-    step5Desc: 'पेश गर्नु अघि सबै कुरा सही छ भनी पुष्टि गर्नुहोस्।',
+    step3Title: 'डेलिभरी प्राथमिकताहरू',
+    step3Desc: 'तपाईंको औषधि कहाँ र कहिले ल्याउने भनेर हामीलाई बताउनुहोस्।',
+    step4Title: 'तपाईंको सदस्यता समीक्षा',
+    step4Desc: 'पेश गर्नु अघि सबै कुरा सही छ भनी पुष्टि गर्नुहोस्।',
 
     // Personal Info fields
     firstName: 'पहिलो नाम',
@@ -225,17 +189,14 @@ const translations = {
     dob: 'जन्म मिति',
     phone: 'फोन नम्बर',
     email: 'इमेल ठेगाना',
-    insurance: 'बीमा प्रदायक',
-    memberId: 'सदस्य आईडी',
-    groupNum: 'समूह नम्बर',
 
-    // Prescriptions fields
+    // Prescription fields
     medicationName: 'औषधिको नाम',
     dosage: 'मात्रा',
     frequency: 'आवृत्ति',
     addMedication: 'अर्को औषधि थप्नुहोस्',
     rxImageLabel: 'प्रिस्क्रिप्सन फोटो',
-    rxImageHint: 'तपाईंको प्रिस्क्रिप्सनको फोटो अपलोड गर्नुहोस् (वैकल्पिक)',
+    rxImageHint: 'आफ्नो प्रिस्क्रिप्सनको फोटो अपलोड गर्नुहोस् (वैकल्पिक)',
     rxImageDrop: 'अपलोड गर्न क्लिक गर्नुहोस् वा तान्नुहोस्',
     rxImageFormats: 'JPG, PNG वा PDF · अधिकतम ५ MB',
     rxImageChange: 'फोटो परिवर्तन गर्नुहोस्',
@@ -246,29 +207,23 @@ const translations = {
     allergiesPlaceholder: 'जस्तै पेनिसिलिन, सल्फा औषधि…',
     conditionsPlaceholder: 'जस्तै टाइप २ मधुमेह, उच्च रक्तचाप…',
 
-    // Doctor fields
+    // Doctor & Pharmacy fields
     doctorSection: 'प्रिस्क्राइबिङ डाक्टर',
     pharmacySection: 'हालको फार्मेसी',
     docName: 'डाक्टरको पूरा नाम',
-    specialty: 'विशेषता',
-    docPhone: 'डाक्टरको फोन',
-    docFax: 'डाक्टरको फ्याक्स',
     clinicName: 'क्लिनिक / अस्पतालको नाम',
     pharmName: 'फार्मेसीको नाम',
     pharmPhone: 'फार्मेसीको फोन',
-    rxNum: 'Rx नम्बर',
 
     // Delivery fields
     deliveryAddress: 'डेलिभरी ठेगाना',
     deliverySchedule: 'डेलिभरी तालिका',
-    street: 'सडक ठेगाना',
+    street: 'ठेगाना',
     city: 'शहर',
     state: 'जिल्ला',
-    zip: 'हुलाक कोड',
-    delivInstructions: 'डेलिभरी निर्देशनहरू',
+    delivInstructions: 'नजिकको चिनारी',
     delivFrequency: 'डेलिभरी आवृत्ति',
     weekly: 'साप्ताहिक',
-    biweekly: 'दुई-साप्ताहिक',
     monthly: 'मासिक',
     delivDay: 'मनपर्ने डेलिभरी दिन',
     delivTime: 'मनपर्ने समय',
@@ -288,7 +243,6 @@ const translations = {
     prescriptions: 'प्रिस्क्रिप्सनहरू',
     allergies: 'एलर्जीहरू',
     doctor: 'डाक्टर',
-    doctorPhone: 'डाक्टरको फोन',
     clinic: 'क्लिनिक',
     currentPharmacy: 'हालको फार्मेसी',
     address: 'ठेगाना',
@@ -296,6 +250,14 @@ const translations = {
     firstDeliveryLabel: 'पहिलो डेलिभरी',
     preferredDay: 'मनपर्ने दिन',
     timeWindow: 'समय विन्डो',
+
+    // Subscription plans
+    subscriptionTitle: 'सदस्यता योजना छान्नुहोस्',
+    plan6monthLabel: '६-महिना योजना',
+    plan1yearLabel: '१-वर्ष योजना',
+    planBestValue: 'सर्वोत्तम मूल्य',
+    paymentNoticeTitle: 'अब के हुन्छ?',
+    paymentNoticeBody: 'तपाईंले पेश गरेपछि, हामी तपाईंको औषधि समीक्षा गरी eSewa भुक्तानी लिंक र व्यक्तिगत उद्धरण तपाईंको फोनमा पठाउनेछौं। भुक्तानी पुष्टि भएपछि, हामी पुष्टि SMS पठाई डेलिभरी सुरु गर्नेछौं।',
 
     // Buttons
     continue: 'जारी राख्नुहोस्',
@@ -308,7 +270,6 @@ const translations = {
 
     // Placeholders
     optional: 'वैकल्पिक',
-    selectSpecialty: 'विशेषता छान्नुहोस्…',
     selectState: 'जिल्ला छान्नुहोस्…',
     selectDay: 'कुनै प्राथमिकता छैन',
 
@@ -325,7 +286,7 @@ const translations = {
     successDesc: 'तपाईंको प्रिस्क्रिप्सन डेलिभरी सदस्यता प्राप्त भयो। हाम्रो टोलीले २४ घण्टाभित्र तपाईंको प्रिस्क्रिप्सन प्रमाणित गर्नेछ।',
     confirmationNumber: 'पुष्टि नम्बर',
     successStep1: 'प्रिस्क्रिप्सन प्रमाणीकरण (२४ घण्टा)',
-    successStep2: 'बीमा प्रक्रिया',
+    successStep2: 'eSewa भुक्तानी पुष्टि',
     successStep3: 'पहिलो डेलिभरी पठाइयो',
 
     // Track Order
@@ -345,31 +306,10 @@ const translations = {
     statusDispatched: 'पठाइयो',
     statusDelivered: 'डेलिभर भयो',
 
-    // Auth
-    authWelcome: 'स्वागत छ',
-    authCreate: 'खाता बनाउनुहोस्',
-    authReset: 'पासवर्ड रिसेट',
-    authLoginDesc: 'आफ्नो सुरक्षित प्रिस्क्रिप्सन प्रोफाइल हेर्न साइन इन गर्नुहोस्।',
-    authRegisterDesc: 'भविष्यका रिफिलका लागि आफ्नो विवरण बचत गर्न दर्ता गर्नुहोस्।',
-    authResetDesc: 'आफ्नो इमेल प्रविष्ट गर्नुहोस्, हामी रिसेट लिंक पठाउनेछौं।',
-    authEmail: 'इमेल ठेगाना',
-    authPassword: 'पासवर्ड',
-    authConfirmPassword: 'पासवर्ड पुष्टि गर्नुहोस्',
-    authSignIn: 'साइन इन',
-    authCreateAccount: 'खाता बनाउनुहोस्',
-    authSendReset: 'रिसेट लिंक पठाउनुहोस्',
-    authNoAccount: 'खाता छैन?',
-    authRegisterLink: 'दर्ता गर्नुहोस्',
-    authForgotPassword: 'पासवर्ड भुल्नुभयो?',
-    authHaveAccount: 'पहिले नै खाता छ?',
-    authSignOut: 'साइन आउट',
-    authMakeAnother: 'अर्को प्रविष्टि गर्नुहोस्',
-
     // Footer
-    copyright: '© २०२६ Ausadhi Ayo Inc. — सर्वाधिकार सुरक्षित।',
+    copyright: '© २०२६ Ausadhi Ayo — सर्वाधिकार सुरक्षित।',
     privacy: 'गोपनीयता नीति',
     terms: 'सेवाका सर्तहरू',
-    hipaaNotice: 'HIPAA सूचना',
     contact: 'सहयोग सम्पर्क',
   },
 }

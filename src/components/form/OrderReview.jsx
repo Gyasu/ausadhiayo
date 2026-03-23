@@ -11,35 +11,29 @@ function ReviewItem({ label, value, full }) {
   )
 }
 
-const PLANS = [
-  {
-    id: '6month',
-    label: '6-Month Plan',
-    price: 'Rs. 1,500',
-    duration: '6 months',
-    badge: null,
-    perks: ['Bi-monthly check-ins', 'Free delivery', 'Refill reminders'],
-  },
-  {
-    id: '1year',
-    label: '1-Year Plan',
-    price: 'Rs. 2,000',
-    duration: '12 months',
-    badge: 'Best Value',
-    perks: ['Priority support', 'Free delivery', 'Refill reminders', 'Annual health summary'],
-  },
-]
-
-export default function OrderReview({ formData, medications, prescriptionImage, onPlanSelect }) {
+export default function OrderReview({ formData, medications, prescriptionImage, selectedPlan, onPlanSelect, planError }) {
   const { t } = useLanguage()
   const d = formData
   const meds = medications.filter(m => m.name.trim())
-  const [selectedPlan, setSelectedPlan] = useState(null)
 
-  function handlePlanSelect(planId) {
-    setSelectedPlan(planId)
-    onPlanSelect?.(planId)
-  }
+  const PLANS = [
+    {
+      id: '6month',
+      label: t.plan6monthLabel,
+      price: 'Rs. 1,500',
+      duration: '6 months',
+      badge: null,
+      perks: ['Bi-monthly check-ins', 'Free delivery', 'Refill reminders'],
+    },
+    {
+      id: '1year',
+      label: t.plan1yearLabel,
+      price: 'Rs. 2,000',
+      duration: '12 months',
+      badge: t.planBestValue,
+      perks: ['Priority support', 'Free delivery', 'Refill reminders', 'Annual health summary'],
+    },
+  ]
 
   return (
     <>
@@ -108,12 +102,12 @@ export default function OrderReview({ formData, medications, prescriptionImage, 
 
       {/* Subscription Plan Picker */}
       <div className="review-section">
-        <div className="review-section-title">Choose Your Subscription Plan</div>
+        <div className="review-section-title">{t.subscriptionTitle}</div>
         <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginTop: '12px' }}>
           {PLANS.map(plan => (
             <div
               key={plan.id}
-              onClick={() => handlePlanSelect(plan.id)}
+              onClick={() => onPlanSelect(plan.id)}
               style={{
                 flex: 1,
                 minWidth: '200px',
@@ -165,7 +159,12 @@ export default function OrderReview({ formData, medications, prescriptionImage, 
           ))}
         </div>
 
-        {/* Payment info notice */}
+        {planError && (
+          <span className="field-error visible" style={{ marginTop: '10px', display: 'block' }}>
+            {planError}
+          </span>
+        )}
+
         {selectedPlan && (
           <div style={{
             marginTop: '16px', padding: '14px 16px',
@@ -173,14 +172,14 @@ export default function OrderReview({ formData, medications, prescriptionImage, 
             border: '1px solid var(--accent)',
             borderRadius: '10px', fontSize: '0.87rem', color: 'var(--text)', lineHeight: '1.6',
           }}>
-            <div style={{ fontWeight: 600, marginBottom: '4px' }}>📱 What happens next?</div>
-            After you submit, we'll review your medications and send an <strong>eSewa payment link</strong> along with a personalized quote to <strong>{d.phone}</strong>. Once we confirm your payment, we'll send a confirmation text and begin your deliveries on <strong>{formatDate(d.firstDelivery)}</strong>.
+            <div style={{ fontWeight: 600, marginBottom: '4px' }}>📱 {t.paymentNoticeTitle}</div>
+            {t.paymentNoticeBody}
           </div>
         )}
 
-        {!selectedPlan && (
+        {!selectedPlan && !planError && (
           <div style={{ marginTop: '10px', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-            Please select a plan to continue.
+            {t.subscriptionTitle}
           </div>
         )}
       </div>
