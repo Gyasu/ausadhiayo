@@ -18,7 +18,7 @@ export default function App() {
   const [showTracking, setShowTracking] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  async function handleSubmit(formData, medications, prescriptionImage) {
+  async function handleSubmit(formData, medications, prescriptionImage, selectedPlan) {
     setIsSubmitting(true)
     const ref = 'MR-' + Date.now().toString(36).toUpperCase()
 
@@ -34,6 +34,11 @@ export default function App() {
       })
     }
 
+    const planLabels = {
+      '6month': '6-Month Plan (Rs. 1,500)',
+      '1year': '1-Year Plan (Rs. 2,000)',
+    }
+
     const payload = {
       ref,
       ...formData,
@@ -41,6 +46,7 @@ export default function App() {
         .filter(m => m.name.trim())
         .map(m => `${m.name}${m.dose ? ' ' + m.dose : ''}${m.freq ? ' (' + m.freq + ')' : ''}`)
         .join(', '),
+      subscriptionPlan: planLabels[selectedPlan] || selectedPlan,
       ...(imageBase64 && { prescriptionImage: imageBase64, prescriptionImageName: imageName }),
     }
 

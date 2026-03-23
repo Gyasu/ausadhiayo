@@ -31,6 +31,7 @@ export default function Form({ onSubmit, isSubmitting }) {
   const [formData, setFormData] = useState(INITIAL_FORM)
   const [medications, setMedications] = useState([{ id: 1, name: '', dose: '', freq: '' }])
   const [prescriptionImage, setPrescriptionImage] = useState(null)
+  const [selectedPlan, setSelectedPlan] = useState(null)
   const [errors, setErrors] = useState({})
   const [slideDir, setSlideDir] = useState('right')
 
@@ -74,6 +75,15 @@ export default function Form({ onSubmit, isSubmitting }) {
     scrollToForm()
   }
 
+  function handleSubmit() {
+    if (!selectedPlan) {
+      setErrors(prev => ({ ...prev, _plan: 'Please select a subscription plan.' }))
+      return
+    }
+    setErrors(prev => ({ ...prev, _plan: undefined }))
+    onSubmit(formData, medications, prescriptionImage, selectedPlan)
+  }
+
   const { t } = useLanguage()
 
   const STEP_HEADERS = [
@@ -91,7 +101,14 @@ export default function Form({ onSubmit, isSubmitting }) {
           onChange={updateField} onAddMed={addMed} onRemoveMed={removeMed} onUpdateMed={updateMed}
           prescriptionImage={prescriptionImage} onImageChange={setPrescriptionImage} />,
     3: <DeliveryInfo formData={formData} errors={errors} onChange={updateField} today={today} />,
-    4: <OrderReview formData={formData} medications={medications} prescriptionImage={prescriptionImage} />,
+    4: <OrderReview
+          formData={formData}
+          medications={medications}
+          prescriptionImage={prescriptionImage}
+          selectedPlan={selectedPlan}
+          onPlanSelect={setSelectedPlan}
+          planError={errors._plan}
+        />,
   }
 
   return (
@@ -113,7 +130,7 @@ export default function Form({ onSubmit, isSubmitting }) {
         <NavButtons
           currentStep={currentStep}
           onBack={handleBack}
-          onNext={currentStep === 4 ? () => onSubmit(formData, medications, prescriptionImage) : handleNext}
+          onNext={currentStep === 4 ? handleSubmit : handleNext}
           isSubmitting={isSubmitting}
         />
       </div>
