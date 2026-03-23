@@ -149,6 +149,36 @@ const translations = {
     statusDispatched: 'Dispatched',
     statusDelivered: 'Delivered',
 
+    // My Prescriptions
+    myPrescriptions: 'My Prescriptions',
+    myPrescriptionsTitle: 'My Prescriptions',
+    myPrescriptionsDesc: 'All your past prescription submissions in one place.',
+    myPrescriptionsEmpty: 'No prescriptions submitted yet.',
+    myPrescriptionsDate: 'Submitted',
+    myPrescriptionsMeds: 'Medications',
+    myPrescriptionsRef: 'Ref',
+    myPrescriptionsDelivery: 'First Delivery',
+
+    // Auth
+    authWelcome: 'Welcome',
+    authCreate: 'Create account',
+    authReset: 'Reset password',
+    authLoginDesc: 'Sign in to access your saved prescription profile.',
+    authRegisterDesc: 'Register to save your details for future refills.',
+    authResetDesc: "Enter your email and we'll send a reset link.",
+    authEmail: 'Email Address',
+    authPassword: 'Password',
+    authConfirmPassword: 'Confirm Password',
+    authSignIn: 'Sign In',
+    authCreateAccount: 'Create Account',
+    authSendReset: 'Send Reset Link',
+    authNoAccount: "Don't have an account?",
+    authRegisterLink: 'Register',
+    authForgotPassword: 'Forgot password?',
+    authHaveAccount: 'Already have an account?',
+    authSignOut: 'Sign Out',
+    authMakeAnother: 'Make another entry',
+
     // Footer
     copyright: '© 2026 Ausadhi Ayo — All rights reserved.',
     privacy: 'Privacy Policy',
