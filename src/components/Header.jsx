@@ -22,7 +22,7 @@ export default function Header({ onTrackOrder, onHome, onMyPrescriptions, user, 
         {user && (
           <>
             <button className="track-order-btn" onClick={onMyPrescriptions}>{t.myPrescriptions}</button>
-            <span className="header-user header-badge">{user.email}</span>
+            <span className="header-user">{user.email}</span>
             <button className="track-order-btn" onClick={onSignOut}>{t.authSignOut}</button>
           </>
         )}
