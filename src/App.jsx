@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { doc, getDoc, setDoc } from 'firebase/firestore'
+import { doc, getDoc, setDoc, collection, addDoc } from 'firebase/firestore'
 import { signOut } from 'firebase/auth'
 import { auth, db } from './firebase'
 import { useAuth } from './AuthContext'
@@ -10,6 +10,7 @@ import Form from './components/form/Form'
 import Confirmation from './components/Confirmation'
 import TrackOrder from './components/TrackOrder'
 import AuthScreen from './components/AuthScreen'
+import MyPrescriptions from './components/MyPrescriptions'
 import ThemeToggle from './components/ThemeToggle'
 import LanguageModal from './components/LanguageModal'
 import SplashScreen from './components/SplashScreen'
@@ -22,6 +23,7 @@ export default function App() {
   const [submitted, setSubmitted] = useState(false)
   const [confirmationRef, setConfirmationRef] = useState('')
   const [showTracking, setShowTracking] = useState(false)
+  const [showHistory, setShowHistory] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [savedProfile, setSavedProfile] = useState(null)
 
@@ -73,12 +75,21 @@ export default function App() {
       body: JSON.stringify(payload),
     }).catch(err => console.error('Failed to save to Google Sheets:', err))
 
-    // Save profile to Firestore for next login
+    // Save profile + submission history to Firestore
     if (user) {
+      const now = new Date().toISOString()
       await setDoc(doc(db, 'patients', user.uid), {
         ...formData,
         medications,
-        updatedAt: new Date().toISOString(),
+        updatedAt: now,
+      })
+      await addDoc(collection(db, 'patients', user.uid, 'submissions'), {
+        ref,
+        medications: payload.medications,
+        firstDelivery: formData.firstDelivery,
+        city: formData.city,
+        state: formData.state,
+        submittedAt: now,
       })
       setSavedProfile({ ...formData, medications })
     }
@@ -106,17 +117,19 @@ export default function App() {
     <>
       <LanguageModal />
       <Header
-        onTrackOrder={() => { setShowTracking(true); setSubmitted(false) }}
-        onHome={() => { setShowTracking(false); setSubmitted(false) }}
+        onTrackOrder={() => { setShowTracking(true); setSubmitted(false); setShowHistory(false) }}
+        onHome={() => { setShowTracking(false); setSubmitted(false); setShowHistory(false) }}
+        onMyPrescriptions={() => { setShowHistory(true); setShowTracking(false); setSubmitted(false) }}
         user={user}
         onSignOut={() => signOut(auth)}
       />
-      {!showTracking && !user && <Banner />}
-      {!showTracking && user && !submitted && <Banner />}
+      {!showTracking && !showHistory && <Banner />}
       {showTracking ? (
         <main id="mainForm">
           <TrackOrder sheetsUrl={SHEETS_URL} />
         </main>
+      ) : showHistory && user ? (
+        <MyPrescriptions uid={user.uid} />
       ) : user === null ? (
         <AuthScreen />
       ) : !submitted ? (

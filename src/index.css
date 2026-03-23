@@ -460,6 +460,47 @@ header {
 }
 .track-order-btn:hover { background: var(--accent); color: white; }
 
+/* ── RX HISTORY ── */
+.rx-history-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rx-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+}
+
+.rx-history-ref {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: monospace;
+}
+
+.rx-history-date {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.rx-history-body {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rx-history-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .auth-link {
   background: none;
   border: none;

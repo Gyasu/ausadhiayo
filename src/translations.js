@@ -306,6 +306,36 @@ const translations = {
     statusDispatched: 'पठाइयो',
     statusDelivered: 'डेलिभर भयो',
 
+    // My Prescriptions
+    myPrescriptions: 'मेरा प्रिस्क्रिप्सनहरू',
+    myPrescriptionsTitle: 'मेरा प्रिस्क्रिप्सनहरू',
+    myPrescriptionsDesc: 'तपाईंका सबै पुराना प्रिस्क्रिप्सन प्रविष्टिहरू एकै ठाउँमा।',
+    myPrescriptionsEmpty: 'अहिलेसम्म कुनै प्रिस्क्रिप्सन पेश गरिएको छैन।',
+    myPrescriptionsDate: 'पेश गरिएको',
+    myPrescriptionsMeds: 'औषधिहरू',
+    myPrescriptionsRef: 'रेफ',
+    myPrescriptionsDelivery: 'पहिलो डेलिभरी',
+
+    // Auth
+    authWelcome: 'स्वागत छ',
+    authCreate: 'खाता बनाउनुहोस्',
+    authReset: 'पासवर्ड रिसेट',
+    authLoginDesc: 'आफ्नो सुरक्षित प्रिस्क्रिप्सन प्रोफाइल हेर्न साइन इन गर्नुहोस्।',
+    authRegisterDesc: 'भविष्यका रिफिलका लागि आफ्नो विवरण बचत गर्न दर्ता गर्नुहोस्।',
+    authResetDesc: 'आफ्नो इमेल प्रविष्ट गर्नुहोस्, हामी रिसेट लिंक पठाउनेछौं।',
+    authEmail: 'इमेल ठेगाना',
+    authPassword: 'पासवर्ड',
+    authConfirmPassword: 'पासवर्ड पुष्टि गर्नुहोस्',
+    authSignIn: 'साइन इन',
+    authCreateAccount: 'खाता बनाउनुहोस्',
+    authSendReset: 'रिसेट लिंक पठाउनुहोस्',
+    authNoAccount: 'खाता छैन?',
+    authRegisterLink: 'दर्ता गर्नुहोस्',
+    authForgotPassword: 'पासवर्ड भुल्नुभयो?',
+    authHaveAccount: 'पहिले नै खाता छ?',
+    authSignOut: 'साइन आउट',
+    authMakeAnother: 'अर्को प्रविष्टि गर्नुहोस्',
+
     // Footer
     copyright: '© २०२६ Ausadhi Ayo — सर्वाधिकार सुरक्षित।',
     privacy: 'गोपनीयता नीति',

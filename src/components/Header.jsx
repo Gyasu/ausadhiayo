@@ -1,6 +1,6 @@
 import { useLanguage } from '../LanguageContext'
 
-export default function Header({ onTrackOrder, onHome, user, onSignOut }) {
+export default function Header({ onTrackOrder, onHome, onMyPrescriptions, user, onSignOut }) {
   const { lang, toggleLanguage, t } = useLanguage()
 
   return (
@@ -21,6 +21,7 @@ export default function Header({ onTrackOrder, onHome, user, onSignOut }) {
         </button>
         {user && (
           <>
+            <button className="track-order-btn" onClick={onMyPrescriptions}>{t.myPrescriptions}</button>
             <span className="header-user header-badge">{user.email}</span>
             <button className="track-order-btn" onClick={onSignOut}>{t.authSignOut}</button>
           </>
