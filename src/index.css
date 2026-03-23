@@ -460,6 +460,26 @@ header {
 }
 .track-order-btn:hover { background: var(--accent); color: white; }
 
+.auth-link {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  padding: 0;
+}
+.auth-link:hover { color: var(--accent); }
+.auth-link strong { color: var(--accent); }
+
+.header-user {
+  font-size: 0.78rem;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ── TRACK ORDER PAGE ── */
 .track-input-row {
   display: flex;

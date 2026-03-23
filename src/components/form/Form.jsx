@@ -26,10 +26,12 @@ const INITIAL_FORM = {
   frequency: 'Once in 2 weeks', delivDay: '', delivTime: '', firstDelivery: '',
 }
 
-export default function Form({ onSubmit, isSubmitting }) {
+export default function Form({ onSubmit, isSubmitting, savedProfile }) {
   const [currentStep, setCurrentStep] = useState(1)
-  const [formData, setFormData] = useState(INITIAL_FORM)
-  const [medications, setMedications] = useState([{ id: 1, name: '', dose: '', freq: '' }])
+  const [formData, setFormData] = useState(savedProfile ? { ...INITIAL_FORM, ...savedProfile } : INITIAL_FORM)
+  const [medications, setMedications] = useState(
+    savedProfile?.medications?.length ? savedProfile.medications : [{ id: 1, name: '', dose: '', freq: '' }]
+  )
   const [prescriptionImage, setPrescriptionImage] = useState(null)
   const [selectedPlan, setSelectedPlan] = useState(null)
   const [errors, setErrors] = useState({})

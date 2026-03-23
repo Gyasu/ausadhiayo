@@ -1,6 +1,6 @@
 import { useLanguage } from '../LanguageContext'
 
-export default function Header({ onTrackOrder, onHome }) {
+export default function Header({ onTrackOrder, onHome, user, onSignOut }) {
   const { lang, toggleLanguage, t } = useLanguage()
 
   return (
@@ -19,6 +19,13 @@ export default function Header({ onTrackOrder, onHome }) {
         <button className="lang-toggle" onClick={toggleLanguage}>
           {lang === 'en' ? '🇳🇵 नेपाली' : '🇬🇧 English'}
         </button>
+        {user && (
+          <>
+            <span className="header-user header-badge">{user.email}</span>
+            <button className="track-order-btn" onClick={onSignOut}>Sign Out</button>
+          </>
+        )}
+        {!user && <div className="header-badge">{t.hipaa}</div>}
       </div>
     </header>
   )
